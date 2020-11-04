@@ -1,0 +1,32 @@
+{
+  "name": "openapi-to-s3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "api2s3": "./index.js",
+    "openapi-to-s3": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/velmie/openAPI-to-S3.git"
+  },
+  "author": "lightsuner@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/velmie/openAPI-to-S3/issues"
+  },
+  "homepage": "https://github.com/velmie/openAPI-to-S3#readme",
+  "engines": {
+    "node": ">=12"
+  },
+  "dependencies": {
+    "aws-sdk": "2.784.0",
+    "chalk": "4.1.0",
+    "meow": "8.0.0",
+    "speccy": "0.11.0"
+  }
+}
