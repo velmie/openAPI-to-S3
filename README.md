@@ -24,6 +24,12 @@ After the installation, there are two aliases available:
 1. openapi-to-s3
 2. api2s3
 
+## AWS credentials
+
+The utility expects that AWS credentials have already been configured.
+
+It works both with (ENV Variables)[https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_environment.html] and (Credential Profiles)[https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_profiles.html] 
+
 ### Options
 
 **Mandatory**:
@@ -40,10 +46,18 @@ After the installation, there are two aliases available:
 
 ### Examples
 
-```sh
+Using ``api2s3`` alias: 
+```bash
 api2s3 --src=./docs/api.yaml --s3-path=bucket/prod/reports --label=$(date +%s)
 ```
 
-```sh
+Using ``openapi-to-s3`` alias:
+```bash
 openapi-to-s3 --src=./docs/api.yaml --s3-path=bucket/dev/reports --label=latest --keep-only=1 --only-diff
 ```
+
+Using docker image:
+```bash
+docker run -e AWS_ACCESS_KEY_ID=... -e AWS_SECRET_ACCESS_KEY=... --volume /path/to/docs:/docs --rm -it velmie/openapi-to-s3 --src=/docs/api.yml --s3Path="velmie-wallet-openapi-docs/dev/reports" --label=$(date +%s)  --keep-only=1 --only-diff
+```
+
