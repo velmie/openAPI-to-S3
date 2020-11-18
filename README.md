@@ -24,11 +24,11 @@ After the installation, there are two aliases available:
 1. openapi-to-s3
 2. api2s3
 
-## AWS credentials
+### AWS credentials
 
 The utility expects that AWS credentials have already been configured.
 
-It works both with (ENV Variables)[https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_environment.html] and (Credential Profiles)[https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_profiles.html] 
+It works both with [ENV Variables](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_environment.html) and [Credential Profiles](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_profiles.html) 
 
 ### Options
 
