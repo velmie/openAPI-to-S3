@@ -7,12 +7,12 @@ const cli = meow(`
     $ openapi-to-s3 --src=./docs/api.yaml --s3-path=bucket/dev/reports --label=latest --keep-only=1
 
   Options
-    --src=./docs/api.yml              The path to the source file
-    --s3-path=bucket/stage/service    The description path on AWS S3
-    --label=v1.0.3                    The label of the source file
-    --only-diff                       Upload only if there are some difference between previous file
-    --keep-only=2                     Keep only N latest documents (default: unlimited)
-    --verbose                         Show errors etc.
+    --src=./docs/api.yml              The path to the source 'OpenAPI' file
+    --s3-path=bucket/stage/service    The destination path on AWS S3
+    --label=v1.0.3                    The label for the current version of the 'OpenAPI' file
+    --only-diff                       Checks the previously uploaded file and uploads a new one only if there are any differences between them
+    --keep-only=2                     Keeps only N the latest documents on AWS S3 (default: unlimited)
+    --verbose                         Shows errors, warnings, etc.
 `, {
   flags: {
     src: {
