@@ -44,20 +44,56 @@ It works both with [ENV Variables](https://docs.aws.amazon.com/sdk-for-php/v3/de
 * ``--keep-only`` - Keeps only **N** the latest documents on AWS S3 (default: unlimited)
 * ``--verbose`` - Shows errors, warnings, etc.
 
+### AWS IAM policy
+
+There is a sample of the policy that can be used to provide the access to ``AWS S3``
+
+Don't forget to replace ``bucket-for-openapi-docs`` with your S3 bucket name.
+
+```JSON
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetBucketAcl"
+            ],
+            "Resource": [
+                "arn:aws:s3:::bucket-for-openapi-docs"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::bucket-for-openapi-docs/*"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+}
+````
+
 ### Examples
 
 Using ``api2s3`` alias: 
 ```bash
-api2s3 --src=./docs/api.yaml --s3-path=bucket/prod/reports --label=$(date +%s)
+api2s3 --src=./docs/api.yaml --s3-path="bucket-for-openapi-docs/prod/reports" --label=$(date +%s)
 ```
 
 Using ``openapi-to-s3`` alias:
 ```bash
-openapi-to-s3 --src=./docs/api.yaml --s3-path=bucket/dev/reports --label=latest --keep-only=1 --only-diff
+openapi-to-s3 --src=./docs/api.yaml --s3-path="bucket-for-openapi-docs/dev/reports" --label=latest --keep-only=1 --only-diff
 ```
 
 Using docker image:
 ```bash
-docker run -e AWS_ACCESS_KEY_ID=... -e AWS_SECRET_ACCESS_KEY=... --volume /path/to/docs:/docs --rm -it velmie/openapi-to-s3 --src=/docs/api.yml --s3Path="velmie-wallet-openapi-docs/dev/reports" --label=$(date +%s)  --keep-only=1 --only-diff
+docker run -e AWS_ACCESS_KEY_ID=... -e AWS_SECRET_ACCESS_KEY=... --volume /path/to/docs:/docs --rm -it velmie/openapi-to-s3 --src=/docs/api.yml --s3Path="bucket-for-openapi-docs/dev/reports" --label=$(date +%s)  --keep-only=1 --only-diff
 ```
 
