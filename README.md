@@ -6,10 +6,14 @@ The utility has been developed to work in tandem with [openAPI-renderer](https:/
 
 It provides a convenient way to deliver OpenAPI specifications to AWS S3 in a correct structure
 
+**Supported specification formats**:
+* Swagger 2.0 schema (yaml)
+* OpenAPI 3.0 schema (yaml) ("3.0.0", "3.0.1", "3.0.2", "3.0.3", "3.1.0")
 
 ## Requirements
 
-Node.js **12.x** or higher
+* Node.js **12.x** or higher
+* npm **7+**
 
 ## Install
 

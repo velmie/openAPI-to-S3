@@ -2,13 +2,9 @@
 
 const fs = require('fs');
 const util = require('util');
-
 const chalk = require('chalk');
-// const ora = require('ora');
 const yaml = require('yaml');
-
-const openAPIvalidator = require('oas-validator');
-
+const schemaValidator = require('@apidevtools/swagger-parser');
 const cli = require('./src/cli');
 const yamlLoader = require('./src/yaml-loader');
 const S3Client = require('./src/s3-client');
@@ -41,7 +37,7 @@ handle(async () => {
   const srcYaml = await yamlLoader.fromFile(cli.flags.src);
 
   try {
-    await openAPIvalidator.validate(srcYaml, {});
+    await schemaValidator.validate(srcYaml);
   } catch (e) {
     throw new Error(`Invalid OpenAPI format: ${chalk.underline.red(e.message)}`);
   }
