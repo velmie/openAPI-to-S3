@@ -3,8 +3,8 @@ const S3 = require('aws-sdk/clients/s3');
 const OUTPUT_FILE_NAME = 'openapi.yml';
 
 class S3Client {
-  constructor(bucket, path) {
-    this.s3 = new S3();
+  constructor(bucket, path, region) {
+    this.s3 = new S3({ region });
     this.bucket = bucket;
     this.path = path;
   }

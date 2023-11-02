@@ -49,10 +49,11 @@ handle(async () => {
     throw new Error(msg);
   }
 
+  const s3Region = cli.flags.region;
   const s3Bucket = s3BitbucketFullPath[0];
   const s3ServicePath = `${s3BitbucketFullPath[1]}/${s3BitbucketFullPath[2]}`;
 
-  const s3Client = new S3Client(s3Bucket, s3ServicePath);
+  const s3Client = new S3Client(s3Bucket, s3ServicePath, s3Region);
 
   await s3Client.checkPermissions();
 

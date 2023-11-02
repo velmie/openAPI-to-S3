@@ -44,6 +44,7 @@ It works both with [ENV Variables](https://docs.aws.amazon.com/sdk-for-php/v3/de
 
 **Optional**:
 
+* ``--region`` - The bucket region on S3.
 * ``--only-diff`` - Checks the previously uploaded file and uploads a new one only if there are any differences between them
 * ``--keep-only`` - Keeps only **N** the latest documents on AWS S3 (default: unlimited)
 * ``--verbose`` - Shows errors, warnings, etc.
@@ -88,7 +89,7 @@ Don't forget to replace ``bucket-for-openapi-docs`` with your S3 bucket name.
 
 Using ``api2s3`` alias: 
 ```bash
-api2s3 --src=./docs/api.yaml --s3-path="bucket-for-openapi-docs/prod/reports" --label=$(date +%s)
+api2s3 --src=./docs/api.yaml --s3-path="bucket-for-openapi-docs/prod/reports" --label=$(date +%s) --region=ap-south-1
 ```
 
 Using ``openapi-to-s3`` alias:
@@ -98,6 +99,6 @@ openapi-to-s3 --src=./docs/api.yaml --s3-path="bucket-for-openapi-docs/dev/repor
 
 Using docker image:
 ```bash
-docker run -e AWS_ACCESS_KEY_ID=... -e AWS_SECRET_ACCESS_KEY=... --volume /path/to/docs:/docs --rm -it velmie/openapi-to-s3 --src=/docs/api.yml --s3Path="bucket-for-openapi-docs/dev/reports" --label=$(date +%s)  --keep-only=1 --only-diff
+docker run -e AWS_ACCESS_KEY_ID=... -e AWS_SECRET_ACCESS_KEY=... --volume /path/to/docs:/docs --rm -it velmie/openapi-to-s3 --src=/docs/api.yml --s3Path="bucket-for-openapi-docs/dev/reports" --label=$(date +%s) --region=ap-south-1 --keep-only=1 --only-diff
 ```
 
