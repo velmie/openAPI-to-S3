@@ -34,6 +34,13 @@ The utility expects that AWS credentials have already been configured.
 
 It works both with [ENV Variables](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_environment.html) and [Credential Profiles](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_profiles.html) 
 
+If you have an error with region, please, use the ``AWS_REGION`` environment variable
+
+Error example:
+```bash
+The eu-south-2 location constraint is incompatible for the region specific endpoint this request was sent to.
+```
+
 ### Options
 
 **Mandatory**:
